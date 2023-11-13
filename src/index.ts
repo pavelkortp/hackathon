@@ -5,7 +5,7 @@ const app: Express = express();
 const port: number = 8080;
 
 enum Button {
-    PLUS = 'PLUS' ,
+    PLUS = 'PLUS',
     MINUS = 'MINUS'
 }
 
@@ -23,16 +23,16 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.patch('/', (req: Request, res: Response) => {
-    const o : {btn: Button} = req.body;
+    const o: { btn: Button } = req.body;
     if (o.btn == Button.MINUS) {
         res.json({
-            plus: counters.PLUS,
-            minus: ++counters.MINUS
+            plus: counters[Button.PLUS],
+            minus: ++counters[Button.MINUS]
         });
     } else {
         res.json({
-            plus: ++counters.PLUS,
-            minus: counters.MINUS
+            plus: ++counters[Button.PLUS],
+            minus: counters[Button.MINUS]
         });
     }
 
